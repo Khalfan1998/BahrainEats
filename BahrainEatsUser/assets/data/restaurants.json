@@ -39,8 +39,8 @@
   "id": "2",
   "name": "Tony Roma's - C.C. Meridiano",
   "deliveryFee": 0.40,
-  "minDeliveryTime": 25,
-  "maxDeliveryTime": 35,
+  "minDeliveryTime": 30,
+  "maxDeliveryTime": 40,
   "rating": 4.7,
   "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant2.jpeg",
   "dishes": [

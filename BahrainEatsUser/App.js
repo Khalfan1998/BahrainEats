@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
   },
   restaurantContainer: {
     width: "100%",
+    marginVertical: 10,
   },
   image: {
     width: "100%",
@@ -38,8 +39,8 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   title: {
-    fontSize: 18,
-    fontWeight: "bold",
+    fontSize: 16,
+    fontWeight: "500",
     marginVertical: 5,
   },
   subtitle: {

@@ -1,11 +1,11 @@
 [{
   "id": "1",
-  "name": "El Cabo Coffe Bar Tres De Mayo",
+  "name": "Jasmis",
   "deliveryFee": 1.40,
   "minDeliveryTime": 25,
   "maxDeliveryTime": 35,
   "rating": 4.0,
-  "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant1.jpeg",
+  "image": "https://img.freepik.com/free-photo/front-view-yummy-meat-cheeseburger-cutting-board-light-background-salad-dinner-fast-food-sandwich-dish-burger_140725-158719.jpg?w=2000",
   "dishes": [
     {
       "name": "Cheese Tequeños",
@@ -37,12 +37,12 @@
   ]
 }, {
   "id": "2",
-  "name": "Tony Roma's - C.C. Meridiano",
+  "name": "McDonalds",
   "deliveryFee": 0.40,
   "minDeliveryTime": 30,
   "maxDeliveryTime": 40,
   "rating": 4.7,
-  "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant2.jpeg",
+  "image": "https://a57.foxnews.com/static.foxnews.com/foxnews.com/content/uploads/2020/10/1200/675/J-Balvin-mcdonalds-meal.jpg?ve=1&tl=1",
   "dishes": [
     {
       "name": "Cajun Ribs",
@@ -73,12 +73,12 @@
   ]
 }, {
   "id": "3",
-  "name": "Brothers Barbecue",
+  "name": "Subway",
   "deliveryFee": 1.40,
   "minDeliveryTime": 20,
   "maxDeliveryTime": 30,
   "rating": 4.3,
-  "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant3.jpeg",
+  "image": "https://i.kym-cdn.com/photos/images/facebook/002/335/219/8fa.jpg",
   "dishes": [
     {
       "name": "Burger Mustang",
@@ -108,12 +108,12 @@
   ]
 }, {
   "id": "4",
-  "name": "Hamburguesa Nostra La Salle",
+  "name": "Five Guys",
   "deliveryFee": 0.90,
   "minDeliveryTime": 30,
   "maxDeliveryTime": 40,
   "rating": 4.5,
-  "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant4.jpeg",
+  "image": "https://c1.wallpaperflare.com/preview/495/766/326/five-guys-chips-burger-joint-burgers.jpg",
   "dishes": [
     {
       "name": "English burger",

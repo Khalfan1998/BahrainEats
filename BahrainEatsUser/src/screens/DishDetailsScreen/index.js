@@ -51,7 +51,7 @@ const DishDetailsScreen = () => {
         style={styles.button}
       >
         <Text style={styles.buttonText}>
-          Add {quantity} to basket &#8226; ${getTotal()}
+          Add {quantity} to basket &#8226; BHD {getTotal()}
         </Text>
       </Pressable>
     </View>

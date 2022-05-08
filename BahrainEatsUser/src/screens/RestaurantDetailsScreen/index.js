@@ -4,15 +4,16 @@ import DishListItem from "../../components/DishListItem";
 import { Ionicons } from "@expo/vector-icons";
 import Header from "./Header";
 import styles from "./styles";
-import { useRoute } from "@react-navigation/native";
+import { useRoute, useNavigation } from "@react-navigation/native";
 
 const restaurant = restaurants[0];
 
 const RestaurantDetailsScreen = () => {
   const route = useRoute();
+  const navigation = useNavigation();
 
   const id = route.params?.id;
-  console.warn(id);
+  // console.warn(id);
 
   return (
     <View style={styles.page}>

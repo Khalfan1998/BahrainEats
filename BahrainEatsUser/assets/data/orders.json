@@ -8,7 +8,7 @@
     "orderRestaurantId": "7d7965f7-1b33-4b8c-9bac-0c22bc905030",
     "Restaurant": {
       "id": "7d7965f7-1b33-4b8c-9bac-0c22bc905030",
-      "name": "El Cabo Coffe Bar Tres De Mayo",
+      "name": "Jasmis",
       "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant1.jpeg",
       "deliveryFee": 0.039448871531492236,
       "minDeliveryTime": 10,
@@ -22,7 +22,7 @@
     },
     "User": {
       "id": "1",
-      "name": "Vadim",
+      "name": "Mohammed",
       "address": "Abc 1",
       "lat": 46.86190499528364,
       "lng": 28.54437769418778
@@ -37,7 +37,7 @@
     "orderRestaurantId": "7d7965f7-1b33-4b8c-9bac-0c22bc905030",
     "Restaurant": {
       "id": "7d7965f7-1b33-4b8c-9bac-0c22bc905030",
-      "name": "Jacobs - DuBuque",
+      "name": "Subway",
       "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant1.jpeg",
       "deliveryFee": 0.039448871531492236,
       "minDeliveryTime": 10,
@@ -51,7 +51,7 @@
     },
     "User": {
       "id": "2",
-      "name": "Lukas",
+      "name": "Yousif",
       "address": "Lithuania 1",
       "lat": 46.86110499528364,
       "lng": 28.54497769418778
@@ -69,7 +69,7 @@
     "_deleted": null,
     "Restaurant": {
       "id": "7d7965f7-1b33-4b8c-9bac-0c22bc905030",
-      "name": "Jacobs - DuBuque",
+      "name": "McDonalds",
       "image": "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant1.jpeg",
       "deliveryFee": 0.039448871531492236,
       "minDeliveryTime": 10,
@@ -83,7 +83,7 @@
     },
     "User": {
       "id": "3",
-      "name": "Alex",
+      "name": "Fahad",
       "address": "Happy land",
       "lat": 46.86133499528364,
       "lng": 28.54421769418778

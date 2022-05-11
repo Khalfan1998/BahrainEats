@@ -16,11 +16,13 @@ const DishDetailsScreen = () => {
   const [quantity, setQuantity] = useState(1);
   const navigation = useNavigation();
   const route = useRoute();
-  const id = route.params.id;
+  const id = route.params?.id;
 
   useEffect(() => {
-    DataStore.query(Dish, id).then(setDish);
-  }, []);
+    if (id) {
+      DataStore.query(Dish, id).then(setDish);
+    }
+  }, [id]);
 
   const onMinus = () => {
     if (quantity > 1) {

@@ -13,10 +13,11 @@ import Header from "./Header";
 import styles from "./styles";
 import { useRoute, useNavigation } from "@react-navigation/native";
 import { DataStore } from "aws-amplify";
-import { Restaurant } from "../../models";
+import { Restaurant, Dish } from "../../models";
 
 const RestaurantDetailsScreen = () => {
   const [restaurant, setRestaurant] = useState(null);
+  const [dishes, setDishes] = useState([]);
 
   const route = useRoute();
   const navigation = useNavigation();
@@ -25,6 +26,10 @@ const RestaurantDetailsScreen = () => {
 
   useEffect(() => {
     DataStore.query(Restaurant, id).then(setRestaurant);
+
+    DataStore.query(Dish, (dish) => dish.restaurantID("eq", id)).then(
+      setDishes
+    );
   }, []);
 
   if (!restaurant) {
@@ -37,7 +42,7 @@ const RestaurantDetailsScreen = () => {
     <View style={styles.page}>
       <FlatList
         ListHeaderComponent={() => <Header restaurant={restaurant} />}
-        data={restaurant.dishes}
+        data={dishes}
         renderItem={({ item }) => (
           <DishListItem dish={item} keyExtractor={(item) => item.name} />
         )}

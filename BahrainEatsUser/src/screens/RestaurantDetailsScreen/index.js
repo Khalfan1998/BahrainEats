@@ -14,6 +14,7 @@ import styles from "./styles";
 import { useRoute, useNavigation } from "@react-navigation/native";
 import { DataStore } from "aws-amplify";
 import { Restaurant, Dish } from "../../models";
+import { useBasketContext } from "../../contexts/BasketContext";
 
 const RestaurantDetailsScreen = () => {
   const [restaurant, setRestaurant] = useState(null);
@@ -24,10 +25,13 @@ const RestaurantDetailsScreen = () => {
 
   const id = route.params?.id;
 
+  const { setRestaurant: setBasketRestaurant } = useBasketContext();
+
   useEffect(() => {
     if (!id) {
       return;
     }
+    setBasketRestaurant(null);
     //fetch the restaurant with the id
     DataStore.query(Restaurant, id).then(setRestaurant);
 
@@ -35,6 +39,10 @@ const RestaurantDetailsScreen = () => {
       setDishes
     );
   }, [id]);
+
+  useEffect(() => {
+    setBasketRestaurant(restaurant);
+  }, [restaurant]);
 
   if (!restaurant) {
     return <ActivityIndicator size="large" color="gray" />;

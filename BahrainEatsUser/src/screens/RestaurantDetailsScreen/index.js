@@ -6,6 +6,7 @@ import {
   FlatList,
   StyleSheet,
   ActivityIndicator,
+  Pressable,
 } from "react-native";
 import DishListItem from "../../components/DishListItem";
 import { Ionicons } from "@expo/vector-icons";
@@ -25,7 +26,11 @@ const RestaurantDetailsScreen = () => {
 
   const id = route.params?.id;
 
-  const { setRestaurant: setBasketRestaurant } = useBasketContext();
+  const {
+    setRestaurant: setBasketRestaurant,
+    basket,
+    basketDishes,
+  } = useBasketContext();
 
   useEffect(() => {
     if (!id) {
@@ -48,8 +53,6 @@ const RestaurantDetailsScreen = () => {
     return <ActivityIndicator size="large" color="gray" />;
   }
 
-  console.log(restaurant);
-
   return (
     <View style={styles.page}>
       <FlatList
@@ -66,6 +69,16 @@ const RestaurantDetailsScreen = () => {
         color="white"
         style={styles.iconContainer}
       />
+      {basket && (
+        <Pressable
+          onPress={() => navigation.navigate("Basket")}
+          style={styles.button}
+        >
+          <Text style={styles.buttonText}>
+            Open Basket ({basketDishes.length})
+          </Text>
+        </Pressable>
+      )}
     </View>
   );
 };

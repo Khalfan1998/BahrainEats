@@ -12,6 +12,7 @@ const BasketContextProvider = ({ children }) => {
   const [basket, setBasket] = useState(null);
   const [basketDishes, setBasketDishes] = useState([]);
 
+  //calculating total price in basket
   const totalPrice = basketDishes.reduce(
     (sum, basketDish) => sum + basketDish.quantity * basketDish.Dish.price,
     restaurant?.deliveryFee

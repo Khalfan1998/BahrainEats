@@ -40,6 +40,20 @@ const OrderDelivery = () => {
       });
     };
     getDeliveryLocations();
+
+    const forgroundSubscription = Location.watchPositionAsync(
+      {
+        accuracy: Location.Accuracy.High,
+        distanceInterval: 100,
+      },
+      (updatedLocation) => {
+        setDriverLocation({
+          latitude: updatedLocation.coords.latitude,
+          longitude: updatedLocation.longitude,
+        });
+      }
+    );
+    return forgroundSubscription;
   }, []);
 
   if (!driverLocation) {

@@ -12,11 +12,14 @@ import styles from "./styles";
 import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location";
 import { Entypo, MaterialIcons } from "@expo/vector-icons";
+import MapViewDirections from "react-native-maps-directions";
 
 const order = orders[0];
 
 const OrderDelivery = () => {
   const [driverLocation, setDriverLocation] = useState(null);
+  const [totalMinutes, setTotalMinutes] = useState(0);
+  const [totalKm, setTotalKm] = useState(0);
 
   const bottomSheetRef = useRef(null);
   const { width, height } = useWindowDimensions();
@@ -59,6 +62,20 @@ const OrderDelivery = () => {
           longitudeDelta: 0.07,
         }}
       >
+        <MapViewDirections
+          origin={driverLocation}
+          destination={{ latitude: order.User.lat, longitude: order.User.lng }}
+          strokeWidth={10}
+          waypoints={[
+            { latitude: order.Restaurant.lat, longitude: order.Restaurant.lng },
+          ]}
+          strokeColor="#3FC060"
+          apikey={"AIzaSyB7j6ZMmmiw_mhZ7M-BpneF3q_ofxHRquw"}
+          onReady={(result) => {
+            setTotalMinutes(result.duration);
+            setTotalKm(result.distance);
+          }}
+        />
         <Marker
           coordinate={{
             latitude: order.Restaurant.lat,
@@ -95,14 +112,16 @@ const OrderDelivery = () => {
         index={0}
       >
         <View style={styles.handleIndicatorContainer}>
-          <Text style={styles.routeDetailsText}>14 min</Text>
+          <Text style={styles.routeDetailsText}>
+            {totalMinutes.toFixed(0)} min
+          </Text>
           <FontAwesome5
             name="shopping-bag"
             size={30}
             color="#3FC060"
             style={{ marginHorizontal: 10 }}
           />
-          <Text style={styles.routeDetailsText}>5 km</Text>
+          <Text style={styles.routeDetailsText}>{totalKm.toFixed(2)} km</Text>
         </View>
         <View style={styles.deliveryDetailsContainer}>
           <Text style={styles.restaurantName}>{order.Restaurant.name}</Text>

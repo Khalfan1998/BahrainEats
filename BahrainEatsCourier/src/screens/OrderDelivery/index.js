@@ -151,13 +151,13 @@ const OrderDelivery = () => {
               ? restaurantLocation
               : deliveryLocation
           }
-          strokeWidth={10}
+          strokeWidth={5}
           waypoints={
             deliveryStatus === ORDER_STATUSES.READY_FOR_PICKUP
               ? [restaurantLocation]
               : []
           }
-          strokeColor="#3FC060"
+          strokeColor="#FB3640"
           apikey={"AIzaSyB7j6ZMmmiw_mhZ7M-BpneF3q_ofxHRquw"}
           onReady={(result) => {
             setIsDriverClose(result.distance <= 0.1);

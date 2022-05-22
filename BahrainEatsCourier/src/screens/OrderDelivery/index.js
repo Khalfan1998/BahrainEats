@@ -157,7 +157,7 @@ const OrderDelivery = () => {
               ? [restaurantLocation]
               : []
           }
-          strokeColor="#FB3640"
+          strokeColor="#4285F4"
           apikey={"AIzaSyB7j6ZMmmiw_mhZ7M-BpneF3q_ofxHRquw"}
           onReady={(result) => {
             setIsDriverClose(result.distance <= 0.1);

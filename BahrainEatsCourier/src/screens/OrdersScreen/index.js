@@ -1,22 +1,23 @@
-import { useRef, useMemo } from "react";
-import {
-  View,
-  Text,
-  FlatList,
-  Dimensions,
-  useWindowDimensions,
-} from "react-native";
-import BottomSheet from "@gorhom/bottom-sheet";
+import { useRef, useMemo, useState, useEffect } from "react";
+import { View, Text, Dimensions, useWindowDimensions } from "react-native";
+import BottomSheet, { BottomSheetFlatList } from "@gorhom/bottom-sheet";
 import orders from "../../../assets/data/orders.json";
 import OrderItem from "../../components/OrderItem";
 import MapView, { Marker } from "react-native-maps";
 import { Entypo } from "@expo/vector-icons";
+import { DataStore } from "aws-amplify";
+import { Order } from "../../models";
 
 const OrdersScreen = () => {
+  const [orders, setOrders] = useState([]);
   const bottomSheetRef = useRef(null);
   const { width, height } = useWindowDimensions();
 
   const snapPoints = useMemo(() => ["12%", "95%"], []);
+
+  useEffect(() => {
+    DataStore.query(Order).then(setOrders);
+  }, []);
 
   return (
     <View style={{ backgroundColor: "lightblue", flex: 1 }}>
@@ -62,7 +63,7 @@ const OrdersScreen = () => {
             Available Orders: {orders.length}
           </Text>
         </View>
-        <FlatList
+        <BottomSheetFlatList
           data={orders}
           renderItem={({ item }) => <OrderItem order={item} />}
         />

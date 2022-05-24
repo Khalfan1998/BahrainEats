@@ -6,26 +6,17 @@ import {
   ActivityIndicator,
   Pressable,
 } from "react-native";
-import BottomSheet from "@gorhom/bottom-sheet";
+import BottomSheet, { BottomSheetFlatList } from "@gorhom/bottom-sheet";
 import { FontAwesome5, Fontisto } from "@expo/vector-icons";
-import orders from "../../../assets/data/orders.json";
 import styles from "./styles";
 import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location";
 import { Entypo, MaterialIcons, Ionicons } from "@expo/vector-icons";
 import MapViewDirections from "react-native-maps-directions";
-import { useNavigation } from "@react-navigation/native";
-
-const order = orders[0];
-
-const restaurantLocation = {
-  latitude: order.Restaurant.lat,
-  longitude: order.Restaurant.lng,
-};
-const deliveryLocation = {
-  latitude: order.User.lat,
-  longitude: order.User.lng,
-};
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { Order, OrderDish, User } from "../../models";
+import { DataStore } from "aws-amplify";
+import { useOrderContext } from "../../contexts/OrderContext";
 
 const ORDER_STATUSES = {
   READY_FOR_PICKUP: "READY_FOR_PICKUP",
@@ -34,6 +25,8 @@ const ORDER_STATUSES = {
 };
 
 const OrderDelivery = () => {
+  const { order, acceptOrder, fetchOrder } = useOrderContext();
+
   const [driverLocation, setDriverLocation] = useState(null);
   const [totalMinutes, setTotalMinutes] = useState(0);
   const [totalKm, setTotalKm] = useState(0);
@@ -48,6 +41,12 @@ const OrderDelivery = () => {
 
   const snapPoints = useMemo(() => ["12%", "95%"], []);
   const navigation = useNavigation();
+  const route = useRoute();
+  const id = route.params?.id;
+
+  useEffect(() => {
+    fetchOrder(id);
+  }, [id]);
 
   useEffect(() => {
     const getDeliveryLocations = async () => {
@@ -79,10 +78,6 @@ const OrderDelivery = () => {
     return foregroundSubscription;
   }, []);
 
-  if (!driverLocation) {
-    return <ActivityIndicator size={"large"} />;
-  }
-
   const onButtonpressed = () => {
     if (deliveryStatus === ORDER_STATUSES.READY_FOR_PICKUP) {
       bottomSheetRef.current?.collapse();
@@ -93,6 +88,7 @@ const OrderDelivery = () => {
         longitudeDelta: 0.01,
       });
       setDeliveryStatus(ORDER_STATUSES.ACCEPTED);
+      acceptOrder(order);
     }
     if (deliveryStatus === ORDER_STATUSES.ACCEPTED) {
       bottomSheetRef.current?.collapse();
@@ -129,6 +125,25 @@ const OrderDelivery = () => {
     }
     return true;
   };
+
+  const restaurantLocation = {
+    latitude: order?.Restaurant?.lat,
+    longitude: order?.Restaurant?.lng,
+  };
+  const deliveryLocation = {
+    latitude: order?.user?.lat,
+    longitude: order?.user?.lng,
+  };
+
+  if (!driverLocation) {
+    return <ActivityIndicator size={"large"} />;
+  }
+
+  if (!order || !driverLocation) {
+    return <ActivityIndicator size={"large"} color="gray" />;
+  }
+
+  console.log(dishItems);
 
   return (
     <View style={styles.container}>
@@ -181,12 +196,9 @@ const OrderDelivery = () => {
         </Marker>
 
         <Marker
-          coordinate={{
-            latitude: order.User.lat,
-            longitude: order.User.lng,
-          }}
-          title={order.User.name}
-          description={order.User.address}
+          coordinate={deliveryLocation}
+          title={order?.user?.name}
+          description={order?.user?.address}
         >
           <View
             style={{ backgroundColor: "green", padding: 5, borderRadius: 20 }}
@@ -230,14 +242,15 @@ const OrderDelivery = () => {
 
           <View style={styles.adressContainer}>
             <FontAwesome5 name="map-marker-alt" size={30} color="grey" />
-            <Text style={styles.adressText}>{order.User.address}</Text>
+            <Text style={styles.adressText}>{order?.user?.address}</Text>
           </View>
 
           <View style={styles.orderDetailsContainer}>
-            <Text style={styles.orderItemText}>Big J x2</Text>
-            <Text style={styles.orderItemText}>Mushroom Supreme x3</Text>
-            <Text style={styles.orderItemText}>Large Fries x4</Text>
-            <Text style={styles.orderItemText}>Sprite x4</Text>
+            {order?.dishes?.map((dishItem) => (
+              <Text style={styles.orderItemText} key={dishItem.id}>
+                {dishItem.Dish.name} x{dishItem.quantity}
+              </Text>
+            ))}
           </View>
         </View>
         <Pressable

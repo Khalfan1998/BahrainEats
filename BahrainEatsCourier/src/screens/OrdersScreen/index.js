@@ -16,7 +16,9 @@ const OrdersScreen = () => {
   const snapPoints = useMemo(() => ["12%", "95%"], []);
 
   useEffect(() => {
-    DataStore.query(Order).then(setOrders);
+    DataStore.query(Order, (order) =>
+      order.status("eq", "READY_FOR_PICKUP")
+    ).then(setOrders);
   }, []);
 
   return (

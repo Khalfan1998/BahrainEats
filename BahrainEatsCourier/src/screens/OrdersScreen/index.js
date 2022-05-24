@@ -21,7 +21,7 @@ const OrdersScreen = () => {
     ).then(setOrders);
   }, []);
 
-  console.log(orders);
+  // console.log(orders);
 
   return (
     <View style={{ backgroundColor: "lightblue", flex: 1 }}>

@@ -1,18 +1,21 @@
 import { useRef, useEffect, useState } from "react";
 import { View, useWindowDimensions, ActivityIndicator } from "react-native";
 import styles from "./styles";
-import MapView, { Marker } from "react-native-maps";
+import MapView from "react-native-maps";
 import * as Location from "expo-location";
-import { Entypo, MaterialIcons, Ionicons } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import MapViewDirections from "react-native-maps-directions";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { useOrderContext } from "../../contexts/OrderContext";
-import { BottomSheetDetails } from "./BottomSheetDetails";
-import CustomMarker from "./CustomMarker";
+import BottomSheetDetails from "./BottomSheetDetails";
+import CustomMarker from "../../components/CustomMarker";
 import { DataStore } from "aws-amplify";
+import { Courier } from "../../models";
+import { useAuthContext } from "../../contexts/AuthContext";
 
 const OrderDelivery = () => {
   const { order, user, fetchOrder } = useOrderContext();
+  const { dbCourier } = useAuthContext();
 
   const [driverLocation, setDriverLocation] = useState(null);
   const [totalMinutes, setTotalMinutes] = useState(0);
@@ -28,6 +31,18 @@ const OrderDelivery = () => {
   useEffect(() => {
     fetchOrder(id);
   }, [id]);
+
+  useEffect(() => {
+    if (!driverLocation) {
+      return;
+    }
+    DataStore.save(
+      Courier.copyOf(dbCourier, (updated) => {
+        updated.lat = driverLocation.latitude;
+        updated.lng = driverLocation.longitude;
+      })
+    );
+  }, [driverLocation]);
 
   useEffect(() => {
     (async () => {
@@ -47,7 +62,7 @@ const OrderDelivery = () => {
     const foregroundSubscription = Location.watchPositionAsync(
       {
         accuracy: Location.Accuracy.High,
-        distanceInterval: 500, //change later if I want it to be more accurate
+        distanceInterval: 500,
       },
       (updatedLocation) => {
         setDriverLocation({
@@ -59,6 +74,15 @@ const OrderDelivery = () => {
     return foregroundSubscription;
   }, []);
 
+  const zoomInOnDriver = () => {
+    mapRef.current.animateToRegion({
+      latitude: driverLocation.latitude,
+      longitude: driverLocation.longitude,
+      latitudeDelta: 0.01,
+      longitudeDelta: 0.01,
+    });
+  };
+
   const restaurantLocation = {
     latitude: order?.Restaurant?.lat,
     longitude: order?.Restaurant?.lng,
@@ -67,10 +91,6 @@ const OrderDelivery = () => {
     latitude: user?.lat,
     longitude: user?.lng,
   };
-
-  if (!driverLocation) {
-    return <ActivityIndicator size={"large"} />;
-  }
 
   if (!order || !user || !driverLocation) {
     return <ActivityIndicator size={"large"} color="gray" />;
@@ -108,34 +128,12 @@ const OrderDelivery = () => {
         />
         <CustomMarker data={order.Restaurant} type="RESTAURANT" />
         <CustomMarker data={user} type="USER" />
-        {/* <Marker
-          coordinate={{
-            latitude: order.Restaurant.lat,
-            longitude: order.Restaurant.lng,
-          }}
-          title={order.Restaurant.name}
-          description={order.Restaurant.address}
-        >
-          <View
-            style={{ backgroundColor: "green", padding: 5, borderRadius: 20 }}
-          >
-            <Entypo name="shop" size={30} color="white" />
-          </View>
-        </Marker>
-
-        <Marker
-          coordinate={deliveryLocation}
-          title={user?.name}
-          description={user?.address}
-        >
-          <View
-            style={{ backgroundColor: "green", padding: 5, borderRadius: 20 }}
-          >
-            <MaterialIcons name="restaurant" size={30} color="white" />
-          </View>
-        </Marker> */}
       </MapView>
-      <BottomSheetDetails totalKm={totalKm} totalMinutes={totalMinutes} />
+      <BottomSheetDetails
+        totalKm={totalKm}
+        totalMinutes={totalMinutes}
+        onAccepted={zoomInOnDriver}
+      />
       {order.status === "READY_FOR_PICKUP" && (
         <Ionicons
           onPress={() => navigation.goBack()}

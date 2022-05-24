@@ -7,7 +7,7 @@ import {
   Alert,
   Pressable,
 } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Auth, DataStore } from "aws-amplify";
 import { Courier, TransportationModes } from "../../models";
@@ -80,7 +80,7 @@ const Profile = () => {
             margin: 10,
             padding: 10,
             borderWidth: 1,
-            borderColor: "grey",
+            borderColor: "gray",
             borderRadius: 10,
           }}
         >
@@ -96,7 +96,7 @@ const Profile = () => {
             margin: 10,
             padding: 10,
             borderWidth: 1,
-            borderColor: "grey",
+            borderColor: "gray",
             borderRadius: 10,
           }}
         >
@@ -104,17 +104,12 @@ const Profile = () => {
         </Pressable>
       </View>
 
-      <Button onPress={onSave} title="Save" style={styles.signOut} />
-
+      <Button onPress={onSave} title="Save" />
       <Text
         onPress={() => Auth.signOut()}
-        style={{
-          textAlign: "center",
-          color: "red",
-          margin: 10,
-        }}
+        style={{ textAlign: "center", color: "red", margin: 10 }}
       >
-        Sign Out
+        Sign out
       </Text>
     </SafeAreaView>
   );

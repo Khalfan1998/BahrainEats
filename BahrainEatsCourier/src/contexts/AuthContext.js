@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useContext } from "react";
 import { Auth, DataStore } from "aws-amplify";
 import { Courier } from "../models";
 
@@ -7,11 +7,10 @@ const AuthContext = createContext({});
 const AuthContextProvider = ({ children }) => {
   const [authUser, setAuthUser] = useState(null);
   const [dbCourier, setDbCourier] = useState(null);
-  //sub is the id of user
   const sub = authUser?.attributes?.sub;
 
   useEffect(() => {
-    Auth.currentAuthenticatedUser({ bypasscache: true }).then(setAuthUser);
+    Auth.currentAuthenticatedUser({ bypassCache: true }).then(setAuthUser);
   }, []);
 
   useEffect(() => {
@@ -20,7 +19,7 @@ const AuthContextProvider = ({ children }) => {
     );
   }, [sub]);
 
-  console.log(dbCourier);
+  // console.log(dbCourier);
 
   return (
     <AuthContext.Provider value={{ authUser, dbCourier, sub, setDbCourier }}>

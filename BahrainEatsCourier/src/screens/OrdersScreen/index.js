@@ -1,5 +1,5 @@
 import { useRef, useMemo, useState, useEffect } from "react";
-import { View, Text, Dimensions, useWindowDimensions } from "react-native";
+import { View, Text, useWindowDimensions } from "react-native";
 import BottomSheet, { BottomSheetFlatList } from "@gorhom/bottom-sheet";
 import orders from "../../../assets/data/orders.json";
 import OrderItem from "../../components/OrderItem";
@@ -20,6 +20,8 @@ const OrdersScreen = () => {
       order.status("eq", "READY_FOR_PICKUP")
     ).then(setOrders);
   }, []);
+
+  console.log(orders);
 
   return (
     <View style={{ backgroundColor: "lightblue", flex: 1 }}>
@@ -42,15 +44,15 @@ const OrdersScreen = () => {
             }}
           >
             <View
-              style={{ backgroundColor: "green", padding: 5, borderRadius: 15 }}
+              style={{ backgroundColor: "green", padding: 5, borderRadius: 20 }}
             >
               <Entypo name="shop" size={24} color="white" />
             </View>
           </Marker>
         ))}
       </MapView>
-      <BottomSheet ref={bottomSheetRef} snapPoints={snapPoints} index={0}>
-        <View style={{ marginBottom: 30, alignItems: "center" }}>
+      <BottomSheet ref={bottomSheetRef} snapPoints={snapPoints}>
+        <View style={{ alignItems: "center", marginBottom: 30 }}>
           <Text
             style={{
               fontSize: 20,
@@ -61,7 +63,7 @@ const OrdersScreen = () => {
           >
             You're Online
           </Text>
-          <Text style={{ letterSpacing: 0.5, color: "gray" }}>
+          <Text style={{ letterSpacing: 0.5, color: "grey" }}>
             Available Orders: {orders.length}
           </Text>
         </View>

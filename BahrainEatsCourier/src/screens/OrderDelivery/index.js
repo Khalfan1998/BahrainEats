@@ -115,7 +115,7 @@ const OrderDelivery = () => {
           destination={
             order.status === "ACCEPTED" ? restaurantLocation : deliveryLocation
           }
-          strokeWidth={10}
+          strokeWidth={5}
           waypoints={
             order.status === "READY_FOR_PICKUP" ? [restaurantLocation] : []
           }

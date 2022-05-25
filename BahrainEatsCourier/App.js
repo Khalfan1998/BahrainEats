@@ -15,6 +15,8 @@ Amplify.configure({
   },
 });
 
+// console.disableYellowBox = true;
+
 function App() {
   return (
     <NavigationContainer>

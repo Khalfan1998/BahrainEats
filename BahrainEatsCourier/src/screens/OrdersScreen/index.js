@@ -1,12 +1,12 @@
 import { useRef, useMemo, useState, useEffect } from "react";
 import { View, Text, useWindowDimensions } from "react-native";
 import BottomSheet, { BottomSheetFlatList } from "@gorhom/bottom-sheet";
-import orders from "../../../assets/data/orders.json";
 import OrderItem from "../../components/OrderItem";
 import MapView, { Marker } from "react-native-maps";
 import { Entypo } from "@expo/vector-icons";
 import { DataStore } from "aws-amplify";
 import { Order } from "../../models";
+import CustomMarker from "../../components/CustomMarker";
 
 const OrdersScreen = () => {
   const [orders, setOrders] = useState([]);
@@ -15,13 +15,22 @@ const OrdersScreen = () => {
 
   const snapPoints = useMemo(() => ["12%", "95%"], []);
 
-  useEffect(() => {
+  const fetchOrders = () => {
     DataStore.query(Order, (order) =>
       order.status("eq", "READY_FOR_PICKUP")
     ).then(setOrders);
-  }, []);
+  };
 
-  // console.log(orders);
+  useEffect(() => {
+    fetchOrders();
+
+    const subscription = DataStore.observe(Order).subscribe((msg) => {
+      if (msg.opType === "UPDATE") {
+        fetchOrders();
+      }
+    });
+    return () => subscription.unsubscribe();
+  }, []);
 
   return (
     <View style={{ backgroundColor: "lightblue", flex: 1 }}>
@@ -34,21 +43,11 @@ const OrdersScreen = () => {
         followsUserLocation
       >
         {orders.map((order) => (
-          <Marker
+          <CustomMarker
             key={order.id}
-            title={order.Restaurant.name}
-            description={order.Restaurant.address}
-            coordinate={{
-              latitude: order.Restaurant.lat,
-              longitude: order.Restaurant.lng,
-            }}
-          >
-            <View
-              style={{ backgroundColor: "green", padding: 5, borderRadius: 20 }}
-            >
-              <Entypo name="shop" size={24} color="white" />
-            </View>
-          </Marker>
+            data={order.Restaurant}
+            type="RESTAURANT"
+          />
         ))}
       </MapView>
       <BottomSheet ref={bottomSheetRef} snapPoints={snapPoints}>

@@ -40,18 +40,6 @@ const OrdersScreen = () => {
   }, []);
 
   useEffect(() => {
-    if (!driverLocation) {
-      return;
-    }
-    DataStore.save(
-      Courier.copyOf(dbCourier, (updated) => {
-        updated.lat = driverLocation.latitude;
-        updated.lng = driverLocation.longitude;
-      })
-    );
-  }, [driverLocation]);
-
-  useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
       if (!status === "granted") {

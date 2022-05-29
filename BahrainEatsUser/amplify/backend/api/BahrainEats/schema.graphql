@@ -1,3 +1,17 @@
+enum TransportationModes {
+  DRIVING
+  BICYCLING
+}
+
+type Courier @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  sub: String!
+  lat: Float!
+  lng: Float!
+  transportationMode: TransportationModes!
+}
+
 type Restaurant @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String!
@@ -10,21 +24,7 @@ type Restaurant @model @auth(rules: [{allow: public}]) {
   lat: Float!
   lng: Float!
   Dishes: [Dish] @hasMany(indexName: "byRestaurant", fields: ["id"])
-}
-
-type BasketDish @model @auth(rules: [{allow: public}]) {
-  id: ID!
-  quantity: String
-  basketID: String
-}
-
-type User @model @auth(rules: [{allow: public}]) {
-  id: ID!
-  sub: String
-  name: String
-  address: String
-  lat: String
-  lng: String
+  Baskets: [Basket] @hasMany(indexName: "byRestaurant", fields: ["id"])
 }
 
 type Dish @model @auth(rules: [{allow: public}]) {
@@ -36,10 +36,22 @@ type Dish @model @auth(rules: [{allow: public}]) {
   restaurantID: ID! @index(name: "byRestaurant")
 }
 
-type OrderDish @model @auth(rules: [{allow: public}]) {
+type User @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  address: String!
+  lat: Float!
+  lng: Float!
+  sub: String!
+  Orders: [Order] @hasMany(indexName: "byUser", fields: ["id"])
+  Baskets: [Basket] @hasMany(indexName: "byUser", fields: ["id"])
+}
+
+type BasketDish @model @auth(rules: [{allow: public}]) {
   id: ID!
   quantity: Int!
-  orderID: String
+  basketID: ID! @index(name: "byBasket")
+  Dish: Dish @hasOne
 }
 
 enum OrderStatus {
@@ -52,12 +64,25 @@ enum OrderStatus {
 
 type Order @model @auth(rules: [{allow: public}]) {
   id: ID!
-  userID: String
+  total: Float!
   status: OrderStatus
+  Restaurant: Restaurant @hasOne
+  OrderDish: [OrderDish] @hasMany(indexName: "byOrder", fields: ["id"])
+  userID: ID! @index(name: "byUser")
+  Courier: Courier @hasOne
+}
+
+type OrderDish @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  quantity: Int!
+  Dish: Dish @hasOne
+  orderID: ID! @index(name: "byOrder")
 }
 
 type Basket @model @auth(rules: [{allow: public}]) {
   id: ID!
-  userID: String
-  restaurantID: String
+  BasketDishes: [BasketDish] @hasMany(indexName: "byBasket", fields: ["id"])
+  userID: ID! @index(name: "byUser")
+  restaurantID: ID! @index(name: "byRestaurant")
 }
+ 

@@ -3,7 +3,7 @@
   "serviceConfiguration": {
     "apiName": "BahrainEats",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/tmp/amplify-c995d4b2-5bae-4bbb-9ed3-65dca7dfc778/amplify/backend/api/BahrainEats/schema.graphql",
+    "gqlSchemaPath": "/tmp/amplify-f508ff4a-103e-46f2-a018-d4f5af5fa840/amplify/backend/api/BahrainEats/schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
       "keyDescription": "api key description",

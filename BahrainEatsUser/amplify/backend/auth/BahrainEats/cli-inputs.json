@@ -3,7 +3,7 @@
   "cognitoConfig": {
     "identityPoolName": "testAuthIdentityPool",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "bahraia713a883",
+    "resourceNameTruncated": "bahraia129b593",
     "userPoolName": "BahrainEats",
     "autoVerifiedAttributes": [
       "email"
@@ -25,9 +25,9 @@
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [],
     "userpoolClientReadAttributes": [],
-    "userpoolClientLambdaRole": "Bahraia713a883_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "Bahraia129b593_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "a713a883",
+    "sharedId": "a129b593",
     "resourceName": "BahrainEats",
     "authSelections": "identityPoolAndUserPool",
     "serviceName": "Cognito",

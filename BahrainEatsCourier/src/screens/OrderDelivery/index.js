@@ -120,7 +120,7 @@ const OrderDelivery = () => {
             order.status === "READY_FOR_PICKUP" ? [restaurantLocation] : []
           }
           strokeColor="#4285F4"
-          apikey={"AIzaSyB7j6ZMmmiw_mhZ7M-BpneF3q_ofxHRquw"}
+          apikey={"AIzaSyD3Q8EpoO_VdruYCFctzYrB6t8XjiG06IQ"}
           onReady={(result) => {
             setTotalMinutes(result.duration);
             setTotalKm(result.distance);

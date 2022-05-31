@@ -26,6 +26,20 @@ const AuthContextProvider = ({ children }) => {
     );
   }, [sub]);
 
+  useEffect(() => {
+    if (dbCourier) {
+      return;
+    }
+    const subscription = DataStore.observe(Courier, dbCourier.id).subscribe(
+      (msg) => {
+        if (msg.opType === "UPDATED") {
+          setDbCourier(msg.element);
+        }
+      }
+    );
+    return () => subscription.unsubscribe();
+  }, [dbCourier]);
+
   // console.log(dbCourier);
 
   return (

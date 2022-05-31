@@ -10,7 +10,8 @@ export enum OrderStatus {
   COOKING = "COOKING",
   READY_FOR_PICKUP = "READY_FOR_PICKUP",
   PICKED_UP = "PICKED_UP",
-  COMPLETED = "COMPLETED"
+  COMPLETED = "COMPLETED",
+  ACCEPTED = "ACCEPTED"
 }
 
 
@@ -51,8 +52,8 @@ export declare class Courier {
   readonly id: string;
   readonly name: string;
   readonly sub: string;
-  readonly lat: number;
-  readonly lng: number;
+  readonly lat?: number | null;
+  readonly lng?: number | null;
   readonly transportationMode: TransportationModes | keyof typeof TransportationModes;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
@@ -94,9 +95,9 @@ export declare class Dish {
 
 export declare class Basket {
   readonly id: string;
+  readonly restaurantID: string;
   readonly BasketDishes?: (BasketDish | null)[] | null;
   readonly userID: string;
-  readonly restaurantID: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Basket, BasketMetaData>);
@@ -133,9 +134,9 @@ export declare class User {
 export declare class Order {
   readonly id: string;
   readonly total: number;
-  readonly status?: OrderStatus | keyof typeof OrderStatus | null;
+  readonly status: OrderStatus | keyof typeof OrderStatus;
   readonly Restaurant?: Restaurant | null;
-  readonly OrderDish?: (OrderDish | null)[] | null;
+  readonly OrderDishes?: (OrderDish | null)[] | null;
   readonly userID: string;
   readonly Courier?: Courier | null;
   readonly createdAt?: string | null;

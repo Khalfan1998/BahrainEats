@@ -28,14 +28,14 @@ export const schema = {
                     "name": "lat",
                     "isArray": false,
                     "type": "Float",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "lng": {
                     "name": "lng",
                     "isArray": false,
                     "type": "Float",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "transportationMode": {
@@ -338,6 +338,13 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
+                "restaurantID": {
+                    "name": "restaurantID",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
                 "BasketDishes": {
                     "name": "BasketDishes",
                     "isArray": true,
@@ -354,13 +361,6 @@ export const schema = {
                 },
                 "userID": {
                     "name": "userID",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "restaurantID": {
-                    "name": "restaurantID",
                     "isArray": false,
                     "type": "ID",
                     "isRequired": true,
@@ -393,18 +393,18 @@ export const schema = {
                 {
                     "type": "key",
                     "properties": {
-                        "name": "byUser",
+                        "name": "byRestaurant",
                         "fields": [
-                            "userID"
+                            "restaurantID"
                         ]
                     }
                 },
                 {
                     "type": "key",
                     "properties": {
-                        "name": "byRestaurant",
+                        "name": "byUser",
                         "fields": [
-                            "restaurantID"
+                            "userID"
                         ]
                     }
                 },
@@ -660,7 +660,7 @@ export const schema = {
                     "type": {
                         "enum": "OrderStatus"
                     },
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "Restaurant": {
@@ -677,8 +677,8 @@ export const schema = {
                         "targetName": "orderRestaurantId"
                     }
                 },
-                "OrderDish": {
-                    "name": "OrderDish",
+                "OrderDishes": {
+                    "name": "OrderDishes",
                     "isArray": true,
                     "type": {
                         "model": "OrderDish"
@@ -889,10 +889,11 @@ export const schema = {
                 "COOKING",
                 "READY_FOR_PICKUP",
                 "PICKED_UP",
-                "COMPLETED"
+                "COMPLETED",
+                "ACCEPTED"
             ]
         }
     },
     "nonModels": {},
-    "version": "e757762e900bd197bdb5303098f3f892"
+    "version": "9bb14d74df7bda3ce5eb6001f8247f62"
 };

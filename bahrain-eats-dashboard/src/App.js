@@ -1,10 +1,6 @@
-import DetailedOrder from "./screens/DetailedOrder";
-import Orders from "./screens/Orders";
-import { Routes, Route } from "react-router-dom";
+import AppRoutes from "./components/AppRoutes";
 import { Layout, Image } from "antd";
 import SideMenu from "../src/components/SideMenu";
-import RestaurantMenu from "./screens/RestaurantMenu";
-import CreateMenuItem from "./screens/CreateMenuItem";
 
 const { Sider, Content, Footer } = Layout;
 
@@ -20,12 +16,7 @@ function App() {
       </Sider>
       <Layout>
         <Content>
-          <Routes>
-            <Route path="" element={<Orders />} />
-            <Route path="order/:id" element={<DetailedOrder />} />
-            <Route path="menu" element={<RestaurantMenu />} />
-            <Route path="menu/create" element={<CreateMenuItem />} />
-          </Routes>
+          <AppRoutes />
         </Content>
         <Footer style={{ textAlign: "center" }}>
           BahrainEats Restaurant Dashboard ©2022

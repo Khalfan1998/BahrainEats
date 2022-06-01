@@ -1,11 +1,11 @@
 import DetailedOrder from "./screens/DetailedOrder";
-import TestScreen from "./screens/TestScreen";
+import Orders from "./screens/Orders";
 
 function App() {
   return (
     <>
-      <DetailedOrder />
-      {/* <TestScreen /> */}
+      {/* <DetailedOrder /> */}
+      <Orders />
     </>
   );
 }

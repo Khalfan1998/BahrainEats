@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { Layout, Image } from "antd";
 import SideMenu from "../src/components/SideMenu";
 import RestaurantMenu from "./screens/RestaurantMenu";
+import CreateMenuItem from "./screens/CreateMenuItem";
 
 const { Sider, Content, Footer } = Layout;
 
@@ -23,6 +24,7 @@ function App() {
             <Route path="" element={<Orders />} />
             <Route path="order/:id" element={<DetailedOrder />} />
             <Route path="menu" element={<RestaurantMenu />} />
+            <Route path="menu/create" element={<CreateMenuItem />} />
           </Routes>
         </Content>
         <Footer style={{ textAlign: "center" }}>

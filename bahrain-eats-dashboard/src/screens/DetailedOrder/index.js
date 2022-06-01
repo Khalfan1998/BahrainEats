@@ -42,7 +42,7 @@ const DetailedOrder = () => {
         </Button>
       </div>
       <Button block type="primary" size="large">
-        Food is done
+        Ready For Pickup
       </Button>
     </Card>
   );

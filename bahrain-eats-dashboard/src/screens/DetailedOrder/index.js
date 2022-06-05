@@ -41,7 +41,7 @@ const DetailedOrder = () => {
           Accept Order
         </Button>
       </div>
-      <Button block type="primary" size="large" style={styles.buttonReady}>
+      <Button block size="large" style={styles.buttonReady}>
         Ready For Pickup
       </Button>
     </Card>
@@ -68,6 +68,8 @@ const styles = {
   },
   buttonReady: {
     borderRadius: "8px",
+    color: "white",
+    backgroundColor: "black",
   },
 };
 

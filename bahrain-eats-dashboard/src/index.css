@@ -22,3 +22,15 @@ li.ant-pagination-item-active a {
 .ant-menu-item-active {
   color:#3fc060 !important
 }
+
+.ant-layout-sider-children {
+  background-color: lightgray !important;
+}
+
+ul.ant-menu.ant-menu-root.ant-menu-vertical.ant-menu-light {
+  background-color: lightgray !important;
+}
+
+.ant-menu-item-selected {
+  background-color: #555555 !important;
+}

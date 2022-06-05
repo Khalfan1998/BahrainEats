@@ -24,7 +24,7 @@ const Settings = () => {
         </Form.Item>
         <Form.Item label="Restaurant Address" required>
           <GooglePlacesAutocomplete
-            apiKey="AIzaSyCm8FnsLzWGaJzCX2vX9DLH73HeLclEkIg"
+            apiKey="AIzaSyCo88DfUDZWtQQEDaysJVz9lsPDHz-Vz2A"
             selectProps={{
               value: address,
               onChange: getAddressLatLng,

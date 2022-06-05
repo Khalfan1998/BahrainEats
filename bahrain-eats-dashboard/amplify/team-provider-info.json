@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-bahraineats-staging-75549-authRole",
+      "UnauthRoleArn": "arn:aws:iam::248390441605:role/amplify-bahraineats-staging-75549-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::248390441605:role/amplify-bahraineats-staging-75549-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-bahraineats-staging-75549-deployment",
+      "UnauthRoleName": "amplify-bahraineats-staging-75549-unauthRole",
+      "StackName": "amplify-bahraineats-staging-75549",
+      "StackId": "arn:aws:cloudformation:us-east-1:248390441605:stack/amplify-bahraineats-staging-75549/c1604010-df24-11ec-9ba3-0e619f7b5c81",
+      "AmplifyAppId": "d1fie5gsuy3lw9"
+    },
+    "categories": {
+      "auth": {
+        "BahrainEats": {}
+      }
+    }
+  }
+}

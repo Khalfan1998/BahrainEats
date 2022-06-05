@@ -28,9 +28,10 @@ const SideMenu = () => {
     },
   ];
 
-  const onMenuItemClicked = (menuItem) => {
+  const onMenuItemClicked = async (menuItem) => {
     if (menuItem.key === "signOut") {
-      Auth.signOut();
+      await Auth.signOut();
+      window.location.reload();
     } else {
       navigate(menuItem.key);
     }

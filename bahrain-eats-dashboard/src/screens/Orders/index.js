@@ -19,6 +19,10 @@ const Orders = () => {
       [OrderStatus.NEW]: "green",
       [OrderStatus.COOKING]: "orange",
       [OrderStatus.READY_FOR_PICKUP]: "black",
+      [OrderStatus.ACCEPTED]: "#36a95c",
+      [OrderStatus.PICKED_UP]: "#716d6d",
+      [OrderStatus.COMPLETED]: "blue",
+      [OrderStatus.DECLINED_BY_RESTAURANT]: "red",
     };
 
     return <Tag color={statusToColor[orderStatus]}>{orderStatus}</Tag>;

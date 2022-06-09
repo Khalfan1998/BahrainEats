@@ -42,7 +42,7 @@ const Settings = () => {
       new Restaurant({
         name,
         image:
-          "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant1.jpeg",
+          "https://images.deliveryhero.io/image/talabat/Menuitems/Big_J_Chicken_Meal_637265569794393067.jpg",
         deliveryFee: 0,
         minDeliveryTime: 15,
         maxDeliveryTime: 120,

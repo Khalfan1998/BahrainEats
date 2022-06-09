@@ -47,7 +47,7 @@ const SideMenu = () => {
 
   return (
     <>
-      {restaurant && <h4>{restaurant.name}</h4>}
+      {restaurant && <h2>{restaurant.name}</h2>}
       <Menu items={menuItems} onClick={onClick} />
     </>
   );

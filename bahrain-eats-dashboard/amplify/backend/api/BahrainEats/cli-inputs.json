@@ -3,11 +3,12 @@
   "serviceConfiguration": {
     "apiName": "BahrainEats",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/tmp/amplify-069258a4-214b-43b8-8447-387581f17957/amplify/backend/api/BahrainEats/schema.graphql",
+    "gqlSchemaPath": "C:\\Users\\khalf\\Documents\\GitHub\\BahrainEats\\bahrain-eats-dashboard\\amplify\\backend\\api\\BahrainEats\\schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
-      "keyDescription": "api key description",
-      "expirationTime": 30
+      "expirationTime": 365,
+      "apiKeyExpirationDate": "2023-06-08T10:47:38.755Z",
+      "keyDescription": "test"
     },
     "additionalAuthTypes": [
       {

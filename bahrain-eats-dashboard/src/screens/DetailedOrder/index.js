@@ -20,7 +20,7 @@ const statusToColor = {
   [OrderStatus.READY_FOR_PICKUP]: "darkblue",
   [OrderStatus.ACCEPTED]: "#36a95c",
   [OrderStatus.PICKED_UP]: "#716d6d",
-  [OrderStatus.COMPLETED]: "blue",
+  [OrderStatus.COMPLETED]: "green",
   [OrderStatus.DECLINED_BY_RESTAURANT]: "red",
 };
 

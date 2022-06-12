@@ -3,16 +3,32 @@ import { DataStore } from "aws-amplify";
 import { Order, OrderStatus } from "../../models";
 import { Card, Table, Tag } from "antd";
 import { useNavigate } from "react-router-dom";
+import { useRestaurantContext } from "../../contexts/RestaurantContext";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
+  const { restaurant } = useRestaurantContext();
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    DataStore.query(Order).then(setOrders);
-  }, []);
+    if (!restaurant) {
+      return;
+    }
+    DataStore.query(Order, (order) =>
+      order
+        .orderRestaurantId("eq", restaurant.id)
+        .or((orderStatus) =>
+          orderStatus
+            .status("eq", "NEW")
+            .status("eq", "COOKING")
+            .status("eq", "ACCEPTED")
+            .status("eq", "READY_FOR_PICKUP")
+        )
+    ).then(setOrders);
+  }, [restaurant]);
 
-  console.log(orders);
+  // console.log(orders);
 
   const renderOrderStatus = (orderStatus) => {
     const statusToColor = {
@@ -35,9 +51,9 @@ const Orders = () => {
       key: "id",
     },
     {
-      title: "Delivery Address",
-      dataIndex: "deliveryAddress",
-      key: "deliveryAddress",
+      title: "Created At",
+      dataIndex: "createdAt",
+      key: "createdAt",
     },
     {
       title: "Price",

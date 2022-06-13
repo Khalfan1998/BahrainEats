@@ -17,7 +17,7 @@ import { Order, OrderDish, OrderStatus, User } from "../../models";
 const statusToColor = {
   [OrderStatus.NEW]: "green",
   [OrderStatus.COOKING]: "orange",
-  [OrderStatus.READY_FOR_PICKUP]: "darkblue",
+  [OrderStatus.READY_FOR_PICKUP]: "green",
   [OrderStatus.ACCEPTED]: "#36a95c",
   [OrderStatus.PICKED_UP]: "#716d6d",
   [OrderStatus.COMPLETED]: "green",

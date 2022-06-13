@@ -79,7 +79,9 @@ const DetailedOrder = () => {
 
   return (
     <Card title={`Order ${id}`} style={{ margin: 20 }}>
-      <Tag color={statusToColor[order?.status]}>{order?.status}</Tag>
+      <Tag color={statusToColor[order?.status]} style={{ marginBottom: 20 }}>
+        {order?.status}
+      </Tag>
       <Descriptions bordered column={{ lg: 1, md: 1, sm: 1 }}>
         <Descriptions.Item label="Customer">{customer?.name}</Descriptions.Item>
         <Descriptions.Item label="Customer Address">

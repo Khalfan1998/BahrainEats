@@ -5,17 +5,20 @@ import CreateMenuItem from "../../screens/CreateMenuItem";
 import OrderHistory from "../../screens/OrderHistory";
 import { Routes, Route } from "react-router-dom";
 import Settings from "../../screens/Settings";
+import TestScreen from "../../screens/TestScreen";
+import TestHome from "../../screens/TestHome";
 
 const AppRoutes = () => {
   return (
     <Routes>
+      <Route path="testHome" element={<TestHome />} />
+      <Route path="testScreen" element={<TestScreen />} />
       <Route path="/" element={<Orders />} />
       <Route path="order/:id" element={<DetailedOrder />} />
       <Route path="menu" element={<RestaurantMenu />} />
       <Route path="menu/create" element={<CreateMenuItem />} />
       <Route path="order-history" element={<OrderHistory />} />
       <Route path="settings" element={<Settings />} />
-
     </Routes>
   );
 };

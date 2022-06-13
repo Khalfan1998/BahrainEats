@@ -19,6 +19,14 @@ const SideMenu = () => {
 
   const mainMenuItems = [
     {
+      key: "testHome",
+      label: "Test Home",
+    },
+    {
+      key: "testScreen",
+      label: "Test Screen",
+    },
+    {
       key: "/",
       label: "Orders",
     },

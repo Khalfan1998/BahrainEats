@@ -47,5 +47,12 @@
         ]
       }
     }
+  },
+  "storage": {
+    "s3bahraineatsstorage53eab3fb": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
+    }
   }
 }

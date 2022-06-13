@@ -1,4 +1,4 @@
-import { Card, Table, Button } from "antd";
+import { Card, Table, Button, Popconfirm } from "antd";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { DataStore } from "aws-amplify";
@@ -17,7 +17,12 @@ const RestaurantMenu = () => {
     }
   }, [restaurant?.id]);
 
-  console.log(dishes);
+  const deleteDish = (dish) => {
+    DataStore.delete(dish);
+    setDishes(dishes.filter((d) => d.id !== dish.id));
+  };
+
+  // console.log(dishes);
 
   const tableColumns = [
     {
@@ -34,7 +39,17 @@ const RestaurantMenu = () => {
     {
       title: "Action",
       key: "action",
-      render: () => <Button danger>Remove</Button>,
+      render: (_, item) => (
+        <Popconfirm
+          placement="topLeft"
+          title={"Are you sure you want to delete this dish?"}
+          onConfirm={() => deleteDish(item)}
+          okText="Yes"
+          cancelText="No"
+        >
+          <Button danger>Remove</Button>
+        </Popconfirm>
+      ),
     },
   ];
 

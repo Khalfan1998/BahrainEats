@@ -47,5 +47,13 @@
         ]
       }
     }
+  },
+  "storage": {
+    "bahraineats583cf62b": {
+      "service": "S3",
+      "serviceType": "imported",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
+    }
   }
 }

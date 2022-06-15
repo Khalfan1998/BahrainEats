@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "BahrainEats": {}
+      },
+      "storage": {
+        "bahraineats583cf62b": {
+          "bucketName": "amplify-bahraineats-staging-75549-deployment",
+          "region": "us-east-1"
+        }
       }
     }
   }

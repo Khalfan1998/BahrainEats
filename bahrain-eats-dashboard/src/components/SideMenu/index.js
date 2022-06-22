@@ -33,8 +33,8 @@ const SideMenu = () => {
       icon: <HomeOutlined />,
     },
     // {
-    //   key: "testScreen",
-    //   label: "Test Screen",
+    //   key: "sidebar",
+    //   label: "Side Bar",
     // },
     {
       key: "orders",

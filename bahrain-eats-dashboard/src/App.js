@@ -8,6 +8,7 @@ import "@aws-amplify/ui-react/styles.css";
 import RestaurantContextProvider from "./contexts/RestaurantContext";
 import "./App.css";
 import Navbar from "./screens/Navbar";
+import NewSideMenu from "../src/components/NewSideMenu";
 
 const { Sider, Content, Footer } = Layout;
 
@@ -19,6 +20,7 @@ function App() {
       <Navbar />
       <Layout>
         <Sider style={{ height: "100vh", backgroundColor: "white" }}>
+          {/* <NewSideMenu /> */}
           <Image
             src="https://previews.123rf.com/images/jianghaistudio/jianghaistudio1701/jianghaistudio170100032/69541516-food-logo-made-from-the-flag-of-bahrain.jpg"
             preview={false}

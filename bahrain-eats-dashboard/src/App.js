@@ -6,6 +6,8 @@ import awsconfig from "./aws-exports";
 import { withAuthenticator } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 import RestaurantContextProvider from "./contexts/RestaurantContext";
+import "./App.css";
+import Navbar from "./screens/Navbar";
 
 const { Sider, Content, Footer } = Layout;
 
@@ -14,6 +16,7 @@ Amplify.configure(awsconfig);
 function App() {
   return (
     <RestaurantContextProvider>
+      <Navbar />
       <Layout>
         <Sider style={{ height: "100vh", backgroundColor: "white" }}>
           <Image

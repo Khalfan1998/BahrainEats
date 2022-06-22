@@ -8,6 +8,7 @@ import {
   HistoryOutlined,
   SettingOutlined,
   LogoutOutlined,
+  HomeOutlined,
 } from "@ant-design/icons";
 import "./index.css";
 
@@ -27,15 +28,16 @@ const SideMenu = () => {
 
   const mainMenuItems = [
     {
-      key: "testHome",
-      label: "Test Home",
-    },
-    {
-      key: "testScreen",
-      label: "Test Screen",
-    },
-    {
       key: "/",
+      label: "Dashboard",
+      icon: <HomeOutlined />,
+    },
+    // {
+    //   key: "testScreen",
+    //   label: "Test Screen",
+    // },
+    {
+      key: "orders",
       label: "Orders",
       icon: <OrderedListOutlined />,
     },
@@ -68,7 +70,7 @@ const SideMenu = () => {
 
   return (
     <>
-      {restaurant && <h2 className="restaurantName">{restaurant.name}</h2>}
+      {/* {restaurant && <h2 className="restaurantName">{restaurant.name}</h2>} */}
 
       <Menu items={menuItems} onClick={onClick} />
     </>

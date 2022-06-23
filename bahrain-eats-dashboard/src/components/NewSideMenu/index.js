@@ -2,9 +2,11 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Auth } from "aws-amplify";
+import { useRestaurantContext } from "../../contexts/RestaurantContext";
 
 const Sidebar = () => {
   const navigate = useNavigate();
+  const { restaurant } = useRestaurantContext();
 
   const onClick = async (menuItem) => {
     if (menuItem.key === "signOut") {

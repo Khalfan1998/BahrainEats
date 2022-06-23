@@ -21,10 +21,10 @@ function App() {
       <Layout>
         <Sider style={{ height: "100vh", backgroundColor: "white" }}>
           {/* <NewSideMenu /> */}
-          <Image
+          {/* <Image
             src="https://previews.123rf.com/images/jianghaistudio/jianghaistudio1701/jianghaistudio170100032/69541516-food-logo-made-from-the-flag-of-bahrain.jpg"
             preview={false}
-          />
+          /> */}
           <SideMenu />
         </Sider>
         <Layout>

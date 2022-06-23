@@ -30,7 +30,8 @@ const SideMenu = () => {
     {
       key: "/",
       label: "Dashboard",
-      icon: <HomeOutlined />,
+      icon: <i className="icon fas fa-home"></i>,
+      className: "text",
     },
     // {
     //   key: "sidebar",
@@ -39,26 +40,27 @@ const SideMenu = () => {
     {
       key: "orders",
       label: "Orders",
-      icon: <OrderedListOutlined />,
+      icon: <i className="icon fas fa-shopping-bag"></i>,
     },
     {
       key: "menu",
       label: "Menu",
-      icon: <FormOutlined />,
+      icon: <i className="icon fas fa-cart-plus"></i>,
     },
     {
       key: "order-history",
       label: "Order History",
-      icon: <HistoryOutlined />,
+      icon: <i className="icon fas fa-bags-shopping"></i>,
     },
   ];
 
   const menuItems = [
     ...(restaurant ? mainMenuItems : []),
+    
     {
       key: "settings",
       label: "Settings",
-      icon: <SettingOutlined />,
+      icon: <i className="icon fas fa-user"></i>,
     },
     {
       key: "signOut",

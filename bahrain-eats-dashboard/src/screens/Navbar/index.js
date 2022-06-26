@@ -38,7 +38,15 @@ const Navbar = () => {
     <header className="main-header navbar">
       <div className="col-search">
         {restaurant && (
-          <h2 className="restaurantName">{restaurant.name} Admin</h2>
+          <h2 className="restaurantName">
+            {" "}
+            <Image
+              src="https://previews.123rf.com/images/jianghaistudio/jianghaistudio1701/jianghaistudio170100032/69541516-food-logo-made-from-the-flag-of-bahrain.jpg"
+              preview={false}
+              style={{ width: "60px" }}
+            />
+            {restaurant.name} Admin
+          </h2>
         )}
 
         {/* <form className="searchform">

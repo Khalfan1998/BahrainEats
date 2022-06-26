@@ -45,7 +45,7 @@ const SideMenu = () => {
     {
       key: "menu",
       label: "Menu",
-      icon: <i className="icon fas fa-cart-plus"></i>,
+      icon: <i className="icon fas fa-file-plus"></i>,
     },
     {
       key: "order-history",

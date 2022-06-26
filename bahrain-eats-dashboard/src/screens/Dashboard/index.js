@@ -1,5 +1,7 @@
 import React from "react";
 import TopTotal from "./TopTotal";
+import SaleStatistics from "./SaleStatistics";
+import ProductsStatistics from "./ProductsStatistics";
 
 const TestHome = () => {
   return (
@@ -12,9 +14,9 @@ const TestHome = () => {
         <TopTotal />
 
         <div className="row">
-          {/* STATICS
-          <SaleStatistics />
-          <ProductsStatistics /> */}
+          {/* STATICS */}
+          <ProductsStatistics />
+          {/* <SaleStatistics /> */}
         </div>
 
         {/* LATEST ORDER */}

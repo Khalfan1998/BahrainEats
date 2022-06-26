@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useRestaurantContext } from "../../contexts/RestaurantContext";
+import { Image } from "antd";
 
 // import $ from "jquery";
 

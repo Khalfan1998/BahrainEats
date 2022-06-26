@@ -56,7 +56,7 @@ const SideMenu = () => {
 
   const menuItems = [
     ...(restaurant ? mainMenuItems : []),
-    
+
     {
       key: "settings",
       label: "Settings",

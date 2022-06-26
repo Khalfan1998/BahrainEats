@@ -49,12 +49,13 @@ svg {
   margin-bottom: 14px;
 }
 .ant-layout-sider-children {
-  margin-top: 40px !important;
+  margin-top: 20px !important;
 }
 
 span.ant-menu-title-content {
   font-size: 16px !important;
   color: #29335d !important;
+  font-weight: 600 !important;
 }
 
 
@@ -63,4 +64,8 @@ aside.ant-layout-sider.ant-layout-sider-dark {
   border-right: 1px solid hsla(208,7%,46%,.25);
   box-shadow: 0 .1rem .25rem rgba(0,0,0,.075);
   display: block;
+}
+
+h2 {
+  font-size: 24px;
 }

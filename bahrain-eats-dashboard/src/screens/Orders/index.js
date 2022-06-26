@@ -87,7 +87,7 @@ const Orders = () => {
         columns={tableColumns}
         rowKey="id"
         onRow={(orderItem) => ({
-          onClick: () => navigate(`order/${orderItem.id}`),
+          onClick: () => navigate(`/order/${orderItem.id}`),
         })}
       />
     </Card>

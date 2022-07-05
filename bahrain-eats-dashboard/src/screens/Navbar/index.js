@@ -43,7 +43,7 @@ const Navbar = () => {
             <Image
               src="https://previews.123rf.com/images/jianghaistudio/jianghaistudio1701/jianghaistudio170100032/69541516-food-logo-made-from-the-flag-of-bahrain.jpg"
               preview={false}
-              style={{ width: "60px" }}
+              style={{ width: "60px", marginRight: "10px" }}
             />
             {restaurant.name} Admin
           </h2>
@@ -96,7 +96,7 @@ const Navbar = () => {
             <Link className="dropdown-toggle" data-bs-toggle="dropdown" to="#">
               <img
                 className="img-xs rounded-circle"
-                src="https://previews.123rf.com/images/jianghaistudio/jianghaistudio1701/jianghaistudio170100032/69541516-food-logo-made-from-the-flag-of-bahrain.jpg"
+                src="https://i.postimg.cc/g2KfrDX7/abstract-user-flat-4.png"
                 alt="User"
               />
             </Link>

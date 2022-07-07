@@ -6,8 +6,8 @@ const CustomMarker = ({ data, type }) => {
   return (
     <Marker
       coordinate={{
-        latitude: data.lat,
-        longitude: data.lng,
+        latitude: data?.lat,
+        longitude: data?.lng,
       }}
       title={data.name}
       description={data.address}

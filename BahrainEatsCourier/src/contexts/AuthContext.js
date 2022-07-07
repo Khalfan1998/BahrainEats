@@ -30,7 +30,7 @@ const AuthContextProvider = ({ children }) => {
     if (dbCourier) {
       return;
     }
-    const subscription = DataStore.observe(Courier, dbCourier.id).subscribe(
+    const subscription = DataStore.observe(Courier, dbCourier?.id).subscribe(
       (msg) => {
         if (msg.opType === "UPDATED") {
           setDbCourier(msg.element);

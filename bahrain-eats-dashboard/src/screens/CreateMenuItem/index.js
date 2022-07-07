@@ -1,8 +1,30 @@
-import { Form, Input, Button, Card, InputNumber, message } from "antd";
+import { Form, Input, Button, Card, InputNumber, Upload, message } from "antd";
 import { DataStore } from "aws-amplify";
 import { useNavigate } from "react-router-dom";
 import { useRestaurantContext } from "../../contexts/RestaurantContext";
 import { Dish } from "../../models";
+import React from "react";
+import { UploadOutlined } from "@ant-design/icons";
+
+const props = {
+  name: "file",
+  action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
+  headers: {
+    authorization: "authorization-text",
+  },
+
+  onChange(info) {
+    if (info.file.status !== "uploading") {
+      console.log(info.file, info.fileList);
+    }
+
+    if (info.file.status === "done") {
+      message.success(`${info.file.name} file uploaded successfully`);
+    } else if (info.file.status === "error") {
+      message.error(`${info.file.name} file upload failed.`);
+    }
+  },
+};
 
 const { TextArea } = Input;
 
@@ -51,6 +73,12 @@ const CreateMenuItem = () => {
         >
           <TextArea rows={4} placeholder="Enter Dish Description" />
         </Form.Item>
+        <Form.Item>
+          <Upload {...props}>
+            <Button icon={<UploadOutlined />}>Click to Upload</Button>
+          </Upload>
+        </Form.Item>
+
         <Form.Item
           label="Price (BHD)"
           name="price"
